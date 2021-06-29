@@ -1,0 +1,14 @@
+
+import './styles/normalize.css';
+import BlogPage from './components/BlogPage';
+
+
+function App() {
+  return (
+    <div >
+      <BlogPage />
+    </div>
+  );
+}
+
+export default App;
