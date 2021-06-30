@@ -6,9 +6,9 @@
 }
 
 .copywrite {
-  height:fit-content;
+  height: fit-content;
   font-size: 20px;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .blur {
@@ -17,7 +17,7 @@
   display: none;
   position: absolute;
   bottom: 0;
-  z-index: 1;
+  z-index: 8;
   background-image: linear-gradient(to top, #111111 0%, #111111 30%, transparent 100%);
 }
 
@@ -31,4 +31,27 @@
   font-size: 15px;
   font-weight:600;
   background-color: #ece8e1;
+  cursor: pointer;
+  user-select: none
+}
+
+/* ********************* RESPONSIVE CODE *************************** */
+
+@media only screen and (max-width: 3840px) {
+  .copywrite {
+    font-size: 40px;
+  }
+
+  .read_more {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 1920px) {
+  .copywrite {
+    font-size: 20px;
+  }
+
+  .read_more {
+    font-size: 15px;
+  }
 }

@@ -1,15 +1,33 @@
 import React, { useRef, useEffect } from 'react';
 import '../styles/write_up_style.css'
 
-export default function WriteUp() {
+export default function WriteUp(props) {
   const CopyWriteRef = useRef();
+  const text_threshold = 500;
+
+  function handle_read_more(event) {
+    event.target.parentElement.children[0].style.height = 'fit-content';
+    event.target.parentElement.children[1].style.display = 'none';
+    event.target.parentElement.children[2].style.display = 'none';
+  }
+
+  useEffect(() => {
+    const copywrite = CopyWriteRef.current
+
+    if (copywrite.getBoundingClientRect().height > 500) {
+      copywrite.style.height = `${text_threshold}px`;
+      copywrite.nextSibling.style.display = 'block';
+      copywrite.nextSibling.nextSibling.style.display = 'block';
+    }
+  });
+
+
   return (
     <div className="write_up">
-      <div ref={CopyWriteRef} className="copywrite">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid nemo nihil vitae. Suscipit, tempore quasi! Voluptas quasi aliquid nam consequatur quis maiores provident inventore veniam illo adipisci sit quisquam, error saepe asperiores dolores magnam ab voluptates est? Et, voluptatum. Nam magnam facilis consectetur assumenda, ducimus inventore sit dolor in laborum. Dolores, vel modi. Soluta, itaque aut pariatur amet ipsum maiores veritatis blanditiis tempora architecto! Repellendus minus sint velit similique quia corporis sequi dicta labore ad et voluptates eos adipisci, quaerat voluptatem nihil explicabo? Nulla vel quibusdam nam iste, rem ex delectus deleniti non atque ad fugiat dignissimos tenetur sapiente saepe autem porro quas repellat aperiam aut nihil qui iusto eum quod! Vitae fugit cum odio vel numquam, molestiae nobis, porro optio, velit doloremque dignissimos. Iure consectetur natus ea quo cum accusamus vel assumenda aspernatur in aliquam obcaecati, nesciunt laudantium a dolores consequuntur voluptatibus autem, ipsum, excepturi tempore neque repellat est. Eveniet nihil, sed quibusdam mollitia voluptate labore exercitationem quis sapiente, earum velit numquam eaque maxime accusamus voluptates! Ducimus libero aut voluptatibus dolore obcaecati a pariatur maxime accusamus natus, voluptate, magni alias rem praesentium voluptatum ipsum, ex sed necessitatibus saepe rerum doloremque enim. Sed quo totam eos facilis amet maxime quasi earum enim modi cumque iste dolores reiciendis at repellendus odit quidem hic libero asperiores ea numquam eaque, debitis nostrum praesentium similique. At porro illum hic deleniti doloremque? Delectus amet, minima aliquid animi voluptatem maxime dignissimos debitis officia. Reprehenderit, recusandae asperiores tenetur nostrum et eveniet! Voluptatem doloremque blanditiis nostrum quae laboriosam assumenda quibusdam, aspernatur, saepe cum at porro reprehenderit dolor minima deleniti vero totam, numquam id commodi. Quis suscipit magnam ducimus voluptatem temporibus similique a quaerat est cupiditate, eligendi aperiam quisquam illum laboriosam delectus sequi optio quidem voluptatum odio pariatur? Doloribus cum nostrum dolorum recusandae praesentium quasi esse nisi ad voluptate ipsa ratione nemo, fuga animi repudiandae deserunt facilis assumenda facere harum qui nesciunt illo quidem dolore! Voluptate voluptates totam tempora consequatur facere recusandae natus, neque molestias aut fugit temporibus quia omnis nemo quos ad vel perferendis quibusdam numquam quam perspiciatis dolor! Qui facilis ea quod, ipsam iusto rerum minima dicta et id. Aliquid illo inventore nihil, tenetur officiis modi quisquam reprehenderit est iste, culpa magnam. Pariatur dolorum nam perferendis optio id, cum placeat assumenda, odio alias quibusdam veniam ducimus officia animi exercitationem eaque voluptatum soluta odit maiores quas iusto eos repellat voluptatibus? Nemo quos accusamus nulla tenetur, itaque deserunt quod placeat eaque error officia sint est, maxime voluptatem cumque pariatur ipsum laudantium hic, qui delectus facere esse fuga aut? Explicabo enim aspernatur, voluptatem rem doloremque, necessitatibus voluptatibus commodi odio quaerat consectetur velit perspiciatis odit vero nostrum similique provident corrupti facere? Praesentium tenetur minima sit, nam sequi voluptatum illo ut deleniti beatae quod sint repudiandae autem ipsa ratione vitae enim debitis, commodi pariatur minus? Repudiandae veniam cupiditate magnam enim! Dicta nam obcaecati maxime praesentium, libero non ea saepe fuga quidem quibusdam, odio totam eaque in? Commodi recusandae ex aut totam magni tenetur similique quibusdam veritatis odio explicabo est nihil, laudantium inventore corrupti quisquam animi distinctio quaerat, eaque natus placeat molestias dicta corporis. Quaerat, ea suscipit? Unde sed harum dignissimos suscipit quia officiis reprehenderit dolorum, reiciendis aspernatur nihil sapiente tempore quisquam provident id, molestias distinctio illum dolore ipsum non quos repudiandae similique ipsam! Magni beatae necessitatibus explicabo esse nobis consequuntur saepe alias laborum earum dolorem aliquam ipsam excepturi, porro fugiat ratione suscipit, quam officiis doloremque aliquid! Quod repellat porro reprehenderit molestias fugiat maiores ducimus odit et dicta? Sapiente obcaecati doloremque, omnis alias saepe molestiae quisquam nulla neque consequatur repudiandae, sed ipsam? Numquam reiciendis aut repudiandae nulla totam sapiente rerum tenetur at culpa.
+      <div ref={CopyWriteRef} className="copywrite" dangerouslySetInnerHTML={{__html: props.copywrite}}>
       </div>
       <div className="blur"></div>
-      <div className="read_more">Read more...</div>
+      <div onClick={handle_read_more}className="read_more">Read more...</div>
     </div>
   )
 }

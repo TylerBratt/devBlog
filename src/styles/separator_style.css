@@ -1,0 +1,8 @@
+.separator {
+  margin: 100px 0;
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 30px;
+  color: #ece8e1;
+}
